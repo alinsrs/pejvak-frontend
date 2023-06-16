@@ -13,10 +13,21 @@
             تایید شماره موبایل
         </div>
         <div style="">
-            photo will come here
+            <v-img
+                class="text-center mx-auto"
+                style="width: 80px; height: 80px;"
+              src="../assets/sms.jpg"
+            >
+
+            </v-img>
         </div>
 
         <div :style="{'width': inputWidth}" class="text-center mx-auto" style="margin-top: 20px">
+          <div class="registerTXT2">
+            کد ارسال شده به شماره
+            {{phoneNumber}}
+            را وارد کنید.
+          </div>
             <div class="ma-auto position-relative" style="max-width: 300px">
                 <v-otp-input
                         v-model="otp"
@@ -42,7 +53,8 @@
             <div>
                 <v-btn
                         class="registerTXT2"
-                        style="margin-top: 15px"
+                        style="margin-top: 15px; height: 50px;
+                        font-family: 'IranianSansBlack', sans-serif"
                         :style="{'width' : inputWidth}"
                         color="primary"
                 >
@@ -65,6 +77,7 @@ export default {
             otp: '',
             text: '',
             expectedOtp: '133707',
+          phoneNumber: '۴۳۵۲****۰۹۱۴'
         }
     },
     computed: {
@@ -94,6 +107,14 @@ export default {
 <style scoped>
 .position-relative {
     position: relative;
+}
+@font-face {
+  font-family: IranianSansBlack;
+  src: url('../fonts/IRANSansXBold.ttf') format('truetype');
+}
+
+*{
+  direction: rtl;
 }
 
 .registerTXT2{

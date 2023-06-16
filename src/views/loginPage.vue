@@ -31,7 +31,7 @@
           <div>
               <v-text-field
                   class="mx-auto"
-                  style="margin-top: 15px"
+                  style="margin-top: 15px; border-radius: 15px"
                   color="primary"
                   :style="{'width' : inputWidth}"
                   outlined

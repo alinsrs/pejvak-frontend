@@ -21,7 +21,7 @@ const routes = [
         path: '/register-form',
         name: 'registerForm',
         component: registerForm
-    }
+    },
 
 ]
 
