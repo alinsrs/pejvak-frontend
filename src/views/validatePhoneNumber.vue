@@ -57,6 +57,7 @@
                         font-family: 'IranianSansBlack', sans-serif"
                         :style="{'width' : inputWidth}"
                         color="primary"
+                        to="/registr-form"
                 >
                     تایید کد
                 </v-btn>

@@ -43,6 +43,7 @@
                 style="margin-top: 15px"
                 :style="{'width' : inputWidth}"
                 color="primary"
+                  to=/validate-phone-number"
               >
                     ثبت و ادامه
               </v-btn>

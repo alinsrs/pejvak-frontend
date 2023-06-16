@@ -124,6 +124,7 @@
                             class="registerTXT2"
                             style="width: 100%; height: 100%; border-radius: 12px; font-size: 20px !important;"
                             color="primary"
+                            to="/khadamat"
                     >
                         ثبت
                     </v-btn>
