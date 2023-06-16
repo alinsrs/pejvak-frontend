@@ -28,7 +28,9 @@
             {{phoneNumber}}
             را وارد کنید.
           </div>
-            <div class="ma-auto position-relative" style="max-width: 300px">
+            <div class="position-relative mt-8 mx-auto"
+                 :style="{'width': inputWidth, 'max-width': inputWidth}"
+            >
                 <v-otp-input
                         v-model="otp"
                         :disabled="loading"
@@ -68,6 +70,8 @@
 </template>
 
 <script>
+
+
 export default {
     name: "validatePhoneNumber",
     data() {
@@ -82,6 +86,9 @@ export default {
         }
     },
     computed: {
+      color() {
+        return color
+      },
         inputWidth() {
             if (this.$vuetify.breakpoint.xs) {
                 return '90%';
