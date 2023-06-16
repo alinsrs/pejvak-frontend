@@ -1,5 +1,6 @@
 <template>
-  <v-app app :style="{'background-color': $vuetify.theme.currentTheme.background}">
+  <v-app app
+         :style="{'background-color': $vuetify.theme.currentTheme.background}">
 
     <v-main>
       <router-view/>

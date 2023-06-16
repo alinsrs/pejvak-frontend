@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import loginPage from "@/views/loginPage.vue";
 import validatePhoneNumber from "@/views/validatePhoneNumber.vue";
 import registerForm from "@/views/registerForm.vue";
+import khadamat from "@/views/khadamat.vue";
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
         name: 'registerForm',
         component: registerForm
     },
+    {
+        path: '/khadamat',
+        name: 'khadamat',
+        component: khadamat
+    }
 
 ]
 
