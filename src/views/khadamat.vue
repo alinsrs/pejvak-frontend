@@ -1,21 +1,22 @@
 <template>
   <v-container fluid>
-    <header style="">
+    <header>
       <v-row class="mt-1">
         <v-col>
           <v-btn style="background: transparent;"
                  class="elevation-0"
           >
-            <v-icon x-large> mdi-account-outline</v-icon>
+            <v-icon x-large> mdi-menu </v-icon>
           </v-btn>
         </v-col>
-        <v-col class="text-right">
+        <v-col class="text-left">
           <v-btn style=" background: transparent;"
                  class="elevation-0"
           >
             <v-icon
                 x-large
-            > mdi-menu
+            >
+              mdi-account-outline
             </v-icon>
           </v-btn>
         </v-col>

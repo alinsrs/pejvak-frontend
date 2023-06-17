@@ -17,7 +17,7 @@
             حساب کاربری شما ایجاد شد، برای امکان فعالیت در پژواک اطلاعات زیر را با دقت تکمیل کنید.
         </div>
 
-        <div style="overflow-y: auto; overflow-x: hidden; font-family: 'My Iranian Sans', sans-serif" class="mt-8 mx-auto"
+        <div style="font-family: 'My Iranian Sans', sans-serif" class="mt-8 mx-auto"
              :style="{'width': inputWidth}">
             <div class="text-right">
                 نام

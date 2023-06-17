@@ -1,10 +1,13 @@
 <template>
   <v-app app
-         :style="{'background-color': $vuetify.theme.currentTheme.background}">
-
-    <v-main>
-      <router-view/>
-    </v-main>
+         :style="{'background-color': $vuetify.theme.currentTheme.background}"
+         style="direction: rtl" lang="fa"
+  >
+    <v-locate-provider rtl>
+      <v-main>
+        <router-view/>
+      </v-main>
+    </v-locate-provider>
   </v-app>
 </template>
 
@@ -12,9 +15,7 @@
 
 export default {
   name: 'App',
-    methods: {
-
-    },
+  methods: {},
 
   data: () => ({
     //
@@ -23,7 +24,7 @@ export default {
 </script>
 
 <style>
-::-webkit-scrollbar{
-    width: 0;
+::-webkit-scrollbar {
+  width: 0;
 }
 </style>
