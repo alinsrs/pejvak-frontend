@@ -1,37 +1,61 @@
 <template>
     <v-container fluid>
-        <header class="mb-5">
-            <div class="txtBold">
+        <header class="mb-8">
+            <div class="txtBold" style="display: flex;">
                 <v-icon x-large style="color: black;"
                         to="/khadamat"
                         class="ml-3"
                 >
                     mdi-arrow-right
                 </v-icon>
-                قلک الکترونیکی
-
+                <div class="">
+                    قلک الکترونیکی
+                </div>
             </div>
         </header>
 
-        <v-row class="txtRegular mx-auto">
-            <div class="mr-2">
+        <div class="txtRegular mx-auto" style="display: flex">
+            <div class="mr-4">
                 میزان کل حمایت شما تا کنون :
             </div>
-            <div class="mr-auto">
+            <div class="mr-auto ml-4">
                 {{ payedMoney }} تومان
             </div>
-        </v-row>
+        </div>
 
-        <v-row>
-            <v-col cols="12" md="6" lg="4" >
-                <v-img src="../assets/1.png" style="">
-                    <v-btn>
+        <v-row class="mx-0 px-0 mt-6">
+            <v-col cols="12" md="8" lg="11" class="mx-auto text-center mx-0 px-0 mb-lg-10 mb-md-10">
+                <v-img src="../assets/1.png" style="position: relative; display: inline-block;">
+                    <v-btn class="overlay-button elevation-0" style="background-color: #734B96; border-radius: 10px;
+                        position: absolute; color: white; font-weight: 800; font-size: 15px; font-family: 'My Iranian Sans', sans-serif"
+                           :style="{'width': inputWidth, 'height': inputHeight}"
+                    >
                         حمایت
-                        mdi-chevron-left
+                        <v-icon> mdi-chevron-left</v-icon>
                     </v-btn>
                 </v-img>
+
             </v-col>
         </v-row>
+
+        <v-row style="overflow-y: scroll">
+
+            <v-col cols="12" md="8" lg="11" style="display: flex;"
+                   class="mx-auto text-center">
+                <div class="txtBold mr-5" style="font-size: 23px;"> تاریخچه</div>
+                <v-icon class="mr-auto ml-7" style="color: black"> mdi-tune-variant</v-icon>
+            </v-col>
+
+            <v-col cols="12" lg="12" md="12" class="mx-1"
+                   v-for="(history, index) in history"
+                   :key="index"
+                   style="display: flex"
+            >
+                <div class="mr-4"> {{ history.date }}</div>
+                <div class="ml-5 mr-auto"> {{ history.amount }} تومان</div>
+            </v-col>
+        </v-row>
+
     </v-container>
 </template>
 
@@ -41,8 +65,35 @@ export default {
     data() {
         return {
             payedMoney: 20000000,
+            history: [
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+                {amount: 2000000, date: '1402.02.03'},
+            ]
         }
     },
+    computed: {
+        inputWidth() {
+            if (this.$vuetify.breakpoint.xs)
+                return "90px"
+            else
+                return '200px'
+        },
+        inputHeight() {
+            if (this.$vuetify.breakpoint.xs)
+                return "48px"
+            else
+                return "70px"
+        }
+    }
 }
 </script>
 
@@ -63,8 +114,8 @@ export default {
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
-    line-height: 32px;
 
+    place-items: center;
 
     color: #1C1D1F;
 }
@@ -77,4 +128,13 @@ export default {
 
     color: #5B5C5F;
 }
+
+
+.overlay-button {
+    position: absolute;
+    bottom: 11%;
+    right: 11%;
+    z-index: 1;
+}
+
 </style>
