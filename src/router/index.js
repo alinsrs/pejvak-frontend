@@ -4,6 +4,7 @@ import loginPage from "@/views/loginPage.vue";
 import validatePhoneNumber from "@/views/validatePhoneNumber.vue";
 import registerForm from "@/views/registerForm.vue";
 import khadamat from "@/views/khadamat.vue";
+import electricalBank from "@/views/electrical-bank.vue";
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
         path: '/khadamat',
         name: 'khadamat',
         component: khadamat
+    },
+    {
+        path: '/electrical-bank',
+        name: 'electrical-bank',
+        component: electricalBank
     }
 
 ]
