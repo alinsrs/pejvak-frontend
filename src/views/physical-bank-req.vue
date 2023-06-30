@@ -139,7 +139,6 @@
 </template>
 
 <script>
-import vuetify from "@/plugins/vuetify";
 
 export default {
     name: "physical-bank-req",
