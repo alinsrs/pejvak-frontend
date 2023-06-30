@@ -59,7 +59,7 @@
 
 <script>
 export default {
-    name: "phisical-bank",
+    name: "physical-bank",
     data() {
         return {
             payedMoney: 20000000,

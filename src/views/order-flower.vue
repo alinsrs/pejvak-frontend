@@ -24,8 +24,8 @@
         </div>
 
         <v-row class="mx-0 px-0 mt-6">
-            <v-col cols="12" md="8" lg="11" class="mx-auto text-center mx-0 px-0 mb-lg-10 mb-md-10">
-                <v-img src="../assets/3.png" style="position: relative; display: inline-block;">
+            <v-col cols="12" md="8" lg="11" class="mx-auto text-center mx-1 px-0 mb-lg-10 mb-md-10">
+                <v-img src="../assets/3.png" style="position: relative; display: inline-block;" class="">
                     <v-btn class="overlay-button elevation-0" style="background-color: #78A781; border-radius: 10px;
                         position: absolute; color: white; font-weight: 800; font-size: 13px; font-family: 'My Iranian Sans', sans-serif"
                            :style="{'width': inputWidth, 'height': inputHeight}"
@@ -51,7 +51,7 @@
                    align-items: center; vertical-align: middle;
 "
             >
-                <v-img :src="history.photo" max-width="90px"></v-img>
+                <v-img max-width="90px" :src=history.photo>  </v-img>
                 <div class="mr-3"> {{ history.date }}</div>
                 <div class="ml-3 mr-auto"> {{ history.amount }} تومان</div>
             </v-col>
@@ -67,12 +67,13 @@ export default {
         return {
             payedMoney: 20000000,
             history: [
-                {photo: "/img/img.cb9e45d2.png", amount: 2000000, date: '1402.02.03'},
-                {photo: "/img/img.cb9e45d2.png", amount: 2000000, date: '1402.02.03'},
-                {photo: "/img/img.cb9e45d2.png", amount: 2000000, date: '1402.02.03'},
-                {photo: "/img/img.cb9e45d2.png", amount: 2000000, date: '1402.02.03'},
-                {photo: "/img/img.cb9e45d2.png", amount: 2000000, date: '1402.02.03'},
-                {photo: "/img/img.cb9e45d2.png", amount: 2000000, date: '1402.02.03'},
+                {photo: require('@/assets/img.png'), amount: 2000000, date: '1402.02.03'},
+                {photo: require('@/assets/img.png'), amount: 2000000, date: '1402.02.03'},
+                {photo: require('@/assets/img.png'), amount: 2000000, date: '1402.02.03'},
+                {photo: require('@/assets/img.png'), amount: 2000000, date: '1402.02.03'},
+                {photo: require('@/assets/img.png'), amount: 2000000, date: '1402.02.03'},
+                {photo: require('@/assets/img.png'), amount: 2000000, date: '1402.02.03'},
+                {photo: require('@/assets/img.png'), amount: 2000000, date: '1402.02.03'},
             ]
         }
     },
@@ -129,7 +130,7 @@ export default {
 .overlay-button {
     position: absolute;
     bottom: 9%;
-    right: 11%;
+    right: 8%;
     z-index: 1;
 }
 
