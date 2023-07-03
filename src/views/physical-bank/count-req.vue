@@ -3,13 +3,13 @@
         <header class="mb-6">
             <div class="txtBold" style="display: flex;">
                 <v-icon x-large style="color: black;"
-                        to="/khadamat"
+                        @click="$router.push('/bank-details')"
                         class="ml-3"
                 >
                     mdi-arrow-right
                 </v-icon>
-                <div class="txtBold">
-                    درخواست جمع آوری
+                <div class="">
+                    درخواست شمارش
                 </div>
             </div>
         </header>
@@ -123,7 +123,7 @@
 
 <script>
 export default {
-    name: "collect-req",
+    name: "count-req",
     data: () => ({
         date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
         menu: false,
@@ -144,12 +144,12 @@ export default {
 <style scoped>
 @font-face {
     font-family: 'My Iranian Sans';
-    src: url('../fonts/IRANSansXBlack.ttf') format('truetype');
+    src: url('../../fonts/IRANSansXBlack.ttf') format('truetype');
 }
 
 @font-face {
     font-family: regularIranSans;
-    src: url("../fonts/IRANSansXMedium.ttf") format('truetype');
+    src: url("../../fonts/IRANSansXMedium.ttf") format('truetype');
 }
 
 .txtBold {

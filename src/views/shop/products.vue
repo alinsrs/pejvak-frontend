@@ -3,7 +3,7 @@
         <header class="mb-6">
             <div class="txtBold" style="display: flex;">
                 <v-icon x-large style="color: black;"
-                        to="/khadamat"
+                        @click="$router.push('/choose-category')"
                         class="ml-3"
                 >
                     mdi-arrow-right
@@ -66,12 +66,12 @@ export default {
 
 @font-face {
     font-family: 'My Iranian Sans';
-    src: url('../fonts/IRANSansXBlack.ttf') format('truetype');
+    src: url('../../fonts/IRANSansXBlack.ttf') format('truetype');
 }
 
 @font-face {
     font-family: regularIranSans;
-    src: url("../fonts/IRANSansXLight.ttf") format('truetype');
+    src: url("../../fonts/IRANSansXLight.ttf") format('truetype');
 }
 
 .txtBold {

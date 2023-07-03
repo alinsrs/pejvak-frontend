@@ -3,19 +3,19 @@
         <header class="mb-6">
             <div class="txtBold" style="display: flex;">
                 <v-icon x-large style="color: black;"
-                        to="/khadamat"
+                        @click="$router.push('/bank-details')"
                         class="ml-3"
                 >
                     mdi-arrow-right
                 </v-icon>
-                <div class="">
-                    ثبت سفارش
+                <div class="txtBold">
+                    درخواست جمع آوری
                 </div>
             </div>
         </header>
 
         <div class="txtRegular mr-4" style="font-size: 15px; font-weight: 800; color: black">
-            نوع محصول مورد نظر خود را انتخاب فرمایید.
+            روز و ساعت مورد نظر خود را مشخص کنید.
         </div>
 
 
@@ -105,41 +105,14 @@
                         </v-col>
                     </v-row>
                 </v-col>
-                <v-col cols="12" sm="12">
-                    <div> آدرس محل ارسال </div>
-                    <v-combobox
-                            class="mt-3"
-                            style="border-radius: 15px;"
-                            height="50px"
-                            clearable
-                            dense
-                            hide-selected
-                            outlined
-                            persistent-hint
-                            v-model="select"
-                            :items="items"
-                            hide-details
-                    ></v-combobox>
-                </v-col>
-                <v-col cols="12" sm="12">
-                    <div class="mb-4">  متن مورد نظر </div>
-                    <v-textarea
-                        outlined
-                        height="100px"
-                    style="border-radius: 20px">
-                    </v-textarea>
-                </v-col>
 
-                <v-col cols="12" sm="12" style="display: flex" class="my-5">
-                    <div class="mr-4">  مبلغ قابل پرداخت :</div>
-                    <div class="mr-auto ml-4"> {{amount}} تومن</div>
-                </v-col>
                 <v-col cols="12" sm="12">
-                    <v-btn style="border-radius: 12px; color: white; width: 100%;"
+                    <v-btn style="border-radius: 12px; color: white; width: 100%; margin-top: auto; margin-bottom: 0; bottom: 3%; top: 100%;"
                            :style="{'background-color': $vuetify.theme.currentTheme.primary}"
                            height="50px"
+
                     >
-                        ثبت سفارش
+                        ثبت درخواست
                     </v-btn>
                 </v-col>
 
@@ -151,7 +124,7 @@
 
 <script>
 export default {
-    name: "order-information",
+    name: "collect-req",
     data: () => ({
         date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
         menu: false,
@@ -170,15 +143,14 @@ export default {
 </script>
 
 <style scoped>
-
 @font-face {
     font-family: 'My Iranian Sans';
-    src: url('../fonts/IRANSansXBlack.ttf') format('truetype');
+    src: url('../../fonts/IRANSansXBlack.ttf') format('truetype');
 }
 
 @font-face {
     font-family: regularIranSans;
-    src: url("../fonts/IRANSansXMedium.ttf") format('truetype');
+    src: url("../../fonts/IRANSansXMedium.ttf") format('truetype');
 }
 
 .txtBold {
@@ -200,5 +172,4 @@ export default {
 
     color: #5B5C5F;
 }
-
 </style>

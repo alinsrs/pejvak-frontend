@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-img
-                src="../assets/pejvak-logo.png"
+                src="../../assets/pejvak-logo.png"
                 width="112.88px"
                 height="112px"
                 class="mx-auto mt-5"
@@ -29,6 +29,7 @@
                         color="primary"
                         placeholder="فقط حروف فارسی"
                         outlined
+                        v-model="firstName"
                 ></v-text-field>
             </div>
 
@@ -42,6 +43,7 @@
                         color="primary"
                         placeholder="فقط حروف فارسی"
                         outlined
+                        v-model="lastName"
                 ></v-text-field>
             </div>
 
@@ -52,25 +54,28 @@
                 <v-col>
                     <v-select
                             style="margin-top: 10px; direction: ltr; border-radius: 12px"
-                            :items="years"
+                            :items="Array.from({length: 113}, (value, index) => 1290 + index).reverse()"
                             label="سال"
                             outlined
+                            v-model="birthYear"
                     ></v-select>
                 </v-col>
                 <v-col>
                     <v-select
                             style="margin-top: 10px; direction: ltr; border-radius: 12px"
-                            :items="months"
+                            :items="Array.from({length: 12}, (value, index) => 1 + index)"
                             label="ماه"
                             outlined
+                            v-model="birthMonth"
                     ></v-select>
                 </v-col>
                 <v-col>
                     <v-select
                             style="margin-top: 10px; direction: ltr; border-radius: 12px"
-                            :items="days"
+                            :items="Array.from({length: 31}, (value, index) => 1 + index)"
                             label="روز"
                             outlined
+                            v-model="birthDay"
                     ></v-select>
                 </v-col>
             </v-row>
@@ -83,8 +88,8 @@
                         class="mx-auto"
                         style="margin-top: 10px; border-radius: 12px"
                         color="primary"
-                        placeholder="فقط حروف فارسی"
                         outlined
+                        v-model="eMail"
                 ></v-text-field>
             </div>
 
@@ -97,9 +102,16 @@
                         <v-select
                                 style="margin-top: 10px; direction: ltr; border-radius: 12px"
                                 :items="regions"
+                                item-text="name"
                                 label="انتخاب کنید"
                                 outlined
-                        ></v-select>
+                                v-model="region"
+                        >
+                            <template v-slot:item="slotProps">
+                                {{ slotProps.item.name }}
+                            </template>
+
+                        </v-select>
                     </div>
                 </v-col>
 
@@ -111,9 +123,17 @@
                         <v-select
                                 style="margin-top: 10px; direction: ltr; border-radius: 12px"
                                 :items="cities"
+                                item-text="name"
+                                v-model="city"
                                 label="انتخاب کنید"
                                 outlined
-                        ></v-select>
+                                :disabled="region === undefined"
+                        >
+                            <template v-slot:item="slotProps">
+                                {{ slotProps.item.name }}
+                            </template>
+
+                        </v-select>
                     </div>
                 </v-col>
             </v-row>
@@ -124,7 +144,7 @@
                             class="registerTXT2"
                             style="width: 100%; height: 100%; border-radius: 12px; font-size: 20px !important;"
                             color="primary"
-                            to="/khadamat"
+                            @click="signUp"
                     >
                         ثبت
                     </v-btn>
@@ -146,15 +166,64 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "registerForm",
+    mounted() {
+        axios.get(`${this.$store.getters.getServerAddress}/provinces`).then(response => {
+            this.regions = response.data.content
+        })
+    },
     data() {
         return {
-            regions: ['آذربایجان شرقی', 'آذربایجان غربی', 'تهران', 'اصفهان'],
-            cities: ['تبریز', 'مراغه', 'میانه', 'اسکو'],
-            years: ['1378', '1379', '1380', '1381', '1282'],
-            months: ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'],
-            days: ['1', '1', '3', '4', '5', '6', '7', '8', '9', '10']
+            region: undefined,
+            city: undefined,
+            firstName: undefined,
+            lastName: undefined,
+            birthDay: undefined,
+            birthMonth: undefined,
+            birthYear: undefined,
+            eMail: undefined,
+            regions: [
+                {
+                    id: 1,
+                    name: "آذربایجان شرقی",
+                    cities: []
+                },
+                {
+                    id: 2,
+                    name: "آذربایجان غربی",
+                    cities: []
+                },
+                {
+                    id: 3,
+                    name: "اردبیل",
+                    cities: []
+                }
+            ],
+            cities: [
+                {
+                    id: 1,
+                    name: "تبریز"
+                },
+                {
+                    id: 2,
+                    name: "میانه"
+                }, {
+                    id: 3,
+                    name: "مرند"
+                }, {
+                    id: 4,
+                    name: "مراغه"
+                }, {
+                    id: 5,
+                    name: "شبستر"
+                }, {
+                    id: 6,
+                    name: "جلفا"
+                },
+            ],
         }
     },
     computed: {
@@ -164,7 +233,40 @@ export default {
             } else {
                 return "300px"
             }
+        },
+        birthDate() {
+            return this.birthYear + '-' + this.birthMonth + '-' + this.birthDay
         }
+    },
+
+    methods: {
+        signUp() {
+            axios.patch(`${this.$store.getters.getServerAddress}/users/${this.$store.getters.getUserId}`, {
+                firstName: this.firstName,
+                lastName: this.lastName,
+                birthDate: this.birthDate,
+                email: this.eMail,
+                provinceId: this.regions.filter(item => item.name === this.region)[0].id,
+                cityId: this.cities.filter(item => item.name === this.city)[0].id,
+                phoneNumber: this.$store.getters.getPhoneNumber,
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${this.$store.getters.getToken}`,
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => console.log(response)).catch(err => console.log(err))
+        },
+    },
+
+    watch: {
+        region(newVal) {
+            const selectedRegion = this.regions.filter(item => item.name === newVal)[0]
+            console.log(selectedRegion.id)
+            axios.get(`${this.$store.getters.getServerAddress}/provinces/${selectedRegion.id}/cities`)
+                .then(response => {
+                    this.cities = response.data.content
+                })
+        },
     }
 }
 </script>
@@ -173,12 +275,12 @@ export default {
 
 @font-face {
     font-family: 'IranSansX';
-    src: url('../fonts/IRANSansXRegular.ttf') format('truetype');
+    src: url('../../fonts/IRANSansXRegular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'My Iranian Sans';
-    src: url('../fonts/IRANSansXRegular.ttf') format('truetype');
+    src: url('../../fonts/IRANSansXRegular.ttf') format('truetype');
 }
 
 * {

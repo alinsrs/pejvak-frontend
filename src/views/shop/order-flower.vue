@@ -3,7 +3,7 @@
         <header class="mb-8">
             <div class="txtBold" style="display: flex;">
                 <v-icon x-large style="color: black;"
-                        to="/khadamat"
+                        @click="$router.push('/khadamat')"
                         class="ml-3"
                 >
                     mdi-arrow-right
@@ -25,10 +25,11 @@
 
         <v-row class="mx-0 px-0 mt-6">
             <v-col cols="12" md="8" lg="11" class="mx-auto text-center mx-1 px-0 mb-lg-10 mb-md-10">
-                <v-img src="../assets/3.png" style="position: relative; display: inline-block;" class="">
+                <v-img src="../../assets/3.png" style="position: relative; display: inline-block;" class="">
                     <v-btn class="overlay-button elevation-0" style="background-color: #78A781; border-radius: 10px;
                         position: absolute; color: white; font-weight: 800; font-size: 13px; font-family: 'My Iranian Sans', sans-serif"
                            :style="{'width': inputWidth, 'height': inputHeight}"
+                           @click="$router.push('/choose-category')"
                     >
                         ثبت سفارش
                         <v-icon> mdi-chevron-left</v-icon>
@@ -61,6 +62,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "order-flower",
     data() {
@@ -76,6 +79,11 @@ export default {
                 {photo: require('@/assets/img.png'), amount: 2000000, date: '1402.02.03'},
             ]
         }
+    },
+    mounted() {
+        axios.get(`${this.$store.getters.getServerAddress}/transactions/total?type=Holder`, {headers: {'Authorization': `Bearer ${this.$store.getters.getToken}`}})
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
     },
     computed: {
         inputWidth() {
@@ -98,12 +106,12 @@ export default {
 
 @font-face {
     font-family: 'My Iranian Sans';
-    src: url('../fonts/IRANSansXBlack.ttf') format('truetype');
+    src: url('../../fonts/IRANSansXBlack.ttf') format('truetype');
 }
 
 @font-face {
     font-family: regularIranSans;
-    src: url("../fonts/IRANSansXMedium.ttf") format('truetype');
+    src: url("../../fonts/IRANSansXMedium.ttf") format('truetype');
 }
 
 .txtBold {

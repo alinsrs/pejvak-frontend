@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-img
-                src="../assets/pejvak-logo.png"
+                src="../../assets/pejvak-logo.png"
                 width="112.88px"
                 height="112px"
                 class="mx-auto mt-5"
@@ -16,7 +16,7 @@
             <v-img
                 class="text-center mx-auto"
                 style="width: 80px; height: 80px;"
-              src="../assets/sms.jpg"
+              src="../../assets/sms.jpg"
             >
 
             </v-img>
@@ -34,7 +34,7 @@
                 <v-otp-input
                         v-model="otp"
                         :disabled="loading"
-                        @finish="onFinish"
+                        length="4"
                 ></v-otp-input>
                 <v-overlay absolute :value="loading">
                     <v-progress-circular
@@ -59,7 +59,7 @@
                         font-family: 'IranianSansBlack', sans-serif"
                         :style="{'width' : inputWidth}"
                         color="primary"
-                        to="/register-form"
+                        @click="validateOTP"
                 >
                     تایید کد
                 </v-btn>
@@ -72,6 +72,9 @@
 <script>
 
 
+import axios from "axios";
+import {mapMutations} from "vuex";
+
 export default {
     name: "validatePhoneNumber",
     data() {
@@ -81,31 +84,31 @@ export default {
             snackbarColor: 'default',
             otp: '',
             text: '',
-            expectedOtp: '133707',
-          phoneNumber: '۴۳۵۲****۰۹۱۴'
         }
     },
     computed: {
-      color() {
-        return color
-      },
         inputWidth() {
             if (this.$vuetify.breakpoint.xs) {
                 return '90%';
             } else {
                 return '300px'
             }
+        },
+        phoneNumber() {
+            return this.$store.getters.getPhoneNumber
         }
     },
     methods: {
-        onFinish(rsp) {
-            this.loading = true
-            setTimeout(() => {
-                this.loading = false
-                this.snackbarColor = (rsp === this.expectedOtp) ? 'success' : 'warning'
-                this.text = `Processed OTP with "${rsp}" (${this.snackbarColor})`
-                this.snackbar = true
-            }, 3500)
+        ...mapMutations(['setUserID', "setToken"]),
+        validateOTP(){
+            this.loading= true
+            axios.post(`${this.$store.getters.getServerAddress}/login`, {phone_number : this.phoneNumber , otp : this.otp})
+                .then(response => {
+                    this.setUserID(response.data.userId)
+                    this.setToken(response.data.token)
+                    console.log(response)
+                })
+                .catch(err => console.log(err))
         }
     },
 
@@ -118,7 +121,7 @@ export default {
 }
 @font-face {
   font-family: IranianSansBlack;
-  src: url('../fonts/IRANSansXBold.ttf') format('truetype');
+  src: url('../../fonts/IRANSansXBold.ttf') format('truetype');
 }
 
 *{

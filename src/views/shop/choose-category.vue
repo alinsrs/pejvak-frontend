@@ -20,8 +20,8 @@
 
         <v-row class="mt-4 mx-auto text-center justify-center">
             <v-col cols="12" lg="4" md="6" sm="4">
-                <v-card style="border: #BDBDBD 1px solid; border-radius: 20px" class="text-center mx-auto elevation-0">
-                    <v-img src="../assets/stand.png" max-width="100px" max-height="100px" class="mx-auto mb-4 mt-4" >
+                <v-card style="border: #BDBDBD 1px solid; border-radius: 20px" class="text-center mx-auto elevation-0" @click="$router.push('/products')">
+                    <v-img src="../../assets/stand.png" max-width="100px" max-height="100px" class="mx-auto mb-4 mt-4" >
 
                     </v-img>
 
@@ -32,8 +32,8 @@
             </v-col>
 
             <v-col cols="12" lg="4" md="6" sm="4">
-                <v-card style="border: #BDBDBD solid 1px; border-radius: 20px" class="mx-auto text-center elevation-0">
-                    <v-img src="../assets/flower.png" max-height="100px" max-width="100px" class="mx-auto mb-4 mt-4">
+                <v-card style="border: #BDBDBD solid 1px; border-radius: 20px" class="mx-auto text-center elevation-0" @click="$router.push('/products')">
+                    <v-img src="../../assets/flower.png" max-height="100px" max-width="100px" class="mx-auto mb-4 mt-4">
 
                     </v-img>
 
@@ -57,12 +57,12 @@ export default {
 
 @font-face {
     font-family: 'My Iranian Sans';
-    src: url('../fonts/IRANSansXBlack.ttf') format('truetype');
+    src: url('../../fonts/IRANSansXBlack.ttf') format('truetype');
 }
 
 @font-face {
     font-family: regularIranSans;
-    src: url("../fonts/IRANSansXLight.ttf") format('truetype');
+    src: url("../../fonts/IRANSansXLight.ttf") format('truetype');
 }
 
 .txtBold {

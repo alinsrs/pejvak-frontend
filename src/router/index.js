@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import loginPage from "@/views/loginPage.vue";
-import validatePhoneNumber from "@/views/validatePhoneNumber.vue";
-import registerForm from "@/views/registerForm.vue";
-import khadamat from "@/views/khadamat.vue";
-import electricalBank from "@/views/electrical-bank.vue";
-import physicalBank from "@/views/physical-bank.vue";
-import orderFlower from "@/views/order-flower.vue";
-import onlineCharge from "@/views/online-charge.vue";
-import physicalBankReq from "@/views/physical-bank-req.vue";
-import chooseCategory from "@/views/choose-category.vue";
-import products from "@/views/products.vue";
-import bankDetails from "@/views/bank-details.vue";
-import orderInformation from "@/views/order-information.vue";
-import countReq from "@/views/count-req.vue";
-import collectReq from "@/views/collect-req.vue";
+import loginPage from "@/views/login/loginPage.vue";
+import validatePhoneNumber from "@/views/login/validatePhoneNumber.vue";
+import registerForm from "@/views/login/registerForm.vue";
+import khadamat from "@/views/login/khadamat.vue";
+import electricalBank from "@/views/electerical-bank/electrical-bank.vue";
+import physicalBank from "@/views/physical-bank/physical-bank.vue";
+import orderFlower from "@/views/shop/order-flower.vue";
+import onlineCharge from "@/views/electerical-bank/online-charge.vue";
+import physicalBankReq from "@/views/physical-bank/physical-bank-req.vue";
+import chooseCategory from "@/views/shop/choose-category.vue";
+import products from "@/views/shop/products.vue";
+import bankDetails from "@/views/physical-bank/bank-details.vue";
+import orderInformation from "@/views/shop/order-information.vue";
+import countReq from "@/views/physical-bank/count-req.vue";
+import collectReq from "@/views/physical-bank/collect-req.vue";
 
 Vue.use(VueRouter)
 

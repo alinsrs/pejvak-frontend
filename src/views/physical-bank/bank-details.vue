@@ -3,7 +3,7 @@
         <header class="mb-8">
             <div class="txtBold" style="display: flex;">
                 <v-icon x-large style="color: black;"
-                        to="/khadamat"
+                        @click="$router.push('/physical-bank')"
                         class="ml-3"
                 >
                     mdi-arrow-right
@@ -13,7 +13,9 @@
                 </div>
 
                 <div class="mr-auto ml-3 txtRegular"
-                     style="font-size: 15px!important; font-weight: 300!important; color: black">
+                     style="font-size: 15px!important; font-weight: 300!important; color: black; cursor: pointer"
+                    @click="$router.push('/collect-req')"
+                >
                     جمع آوری
                 </div>
             </div>
@@ -59,6 +61,7 @@
                     <v-btn style="border-radius: 12px; color: white; width: 90%;"
                            :style="{'background-color': $vuetify.theme.currentTheme.primary}"
                            height="50px"
+                           @click="$router.push('/count-req')"
                     >
                         درخواست شمارش
                     </v-btn>
@@ -70,8 +73,15 @@
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
     name: "bank-details",
+    methods: {
+        router() {
+            return router
+        }
+    },
     data() {
         return {
             amount: 20000000,
@@ -99,12 +109,12 @@ export default {
 
 @font-face {
     font-family: 'My Iranian Sans';
-    src: url('../fonts/IRANSansXBlack.ttf') format('truetype');
+    src: url('../../fonts/IRANSansXBlack.ttf') format('truetype');
 }
 
 @font-face {
     font-family: regularIranSans;
-    src: url("../fonts/IRANSansXMedium.ttf") format('truetype');
+    src: url("../../fonts/IRANSansXMedium.ttf") format('truetype');
 }
 
 .txtBold {
