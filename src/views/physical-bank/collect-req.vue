@@ -107,10 +107,11 @@
                 </v-col>
 
                 <v-col cols="12" sm="12">
-                    <v-btn style="border-radius: 12px; color: white; width: 100%; margin-top: auto; margin-bottom: 0; bottom: 3%; top: 100%;"
+                    <v-btn style="border-radius: 12px; color: white; width: 100%; margin-top: auto; margin-bottom: 0;
+                     bottom: 3%; top: 100%; font-size: 20px"
                            :style="{'background-color': $vuetify.theme.currentTheme.primary}"
                            height="50px"
-
+                            class="txtRegular"
                     >
                         ثبت درخواست
                     </v-btn>

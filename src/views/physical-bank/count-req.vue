@@ -107,9 +107,12 @@
                 </v-col>
 
                 <v-col cols="12" sm="12">
-                    <v-btn style="border-radius: 12px; color: white; width: 100%; margin-top: auto; margin-bottom: 0; bottom: 3%; top: 100%;"
+                    <v-btn style="border-radius: 12px; color: white; width: 100%; margin-top: auto; margin-bottom: 0;
+                     bottom: 3%; top: 100%; font-size: 18px"
                            :style="{'background-color': $vuetify.theme.currentTheme.primary}"
                            height="50px"
+                           @click="dialog=true"
+                           class="txtRegular"
                     >
                         ثبت درخواست
                     </v-btn>
@@ -117,6 +120,45 @@
 
             </v-row>
         </form>
+
+        <v-dialog
+            v-model="dialog"
+            width="500"
+            style="background-color: #F6EBFF;
+            border-radius: 30px;
+"
+        >
+            <v-card
+                style="border-radius: 30px"
+            >
+                <v-card-title class="justify-end">
+                    <v-icon @click="dialog=false">
+                        mdi-close
+                    </v-icon>
+                </v-card-title>
+
+                <v-card-text class="mt-6 mb-8 text-center">
+                    <v-icon color="#1EA362" size="100" class="mb-6">
+                        mdi-check-circle
+                    </v-icon>
+
+                    <div class="txtRegular black--text" style="font-size: 20px">
+                        درخواست شما با موفقیت ثبت شد.
+                    </div>
+                </v-card-text>
+
+                <v-card-actions>
+                    <v-btn
+                        class="mx-auto mb-6 py-8 px-10 txtRegular white--text"
+                        color="#0072FF"
+                        @click="dialog = false"
+                        style="font-size: 16px"
+                    >
+                        متوجه شدم
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
 
     </v-container>
 </template>
@@ -137,6 +179,7 @@ export default {
             'Vuetify',
         ],
         amount: 20000000,
+        dialog: false,
     }),
 }
 </script>
