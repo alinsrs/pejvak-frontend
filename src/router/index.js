@@ -15,6 +15,7 @@ import bankDetails from "@/views/physical-bank/bank-details.vue";
 import orderInformation from "@/views/shop/order-information.vue";
 import countReq from "@/views/physical-bank/count-req.vue";
 import collectReq from "@/views/physical-bank/collect-req.vue";
+import addAddress from "@/views/shop/add-address.vue";
 
 Vue.use(VueRouter)
 
@@ -93,6 +94,11 @@ const routes = [
         path: '/collect-req',
         name: 'collect-req',
         component: collectReq
+    },
+    {
+        path: '/order-information/add-address',
+        name: 'add-address',
+        component: addAddress
     }
 ]
 

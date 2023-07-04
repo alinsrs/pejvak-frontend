@@ -8,7 +8,11 @@ export default new Vuex.Store({
     serverAddress : '',
     phoneNumber : "",
     userID : "",
-    token: ""
+    token: "",
+    addresses: '',
+    provinces: '',
+    cities: '',
+    zones: '',
   },
   getters: {
     getServerAddress(state) {
@@ -22,7 +26,19 @@ export default new Vuex.Store({
     },
     getToken(state) {
       return state.token
-    }
+    },
+    getAddresses(state) {
+      return state.addresses
+    },
+    getProvinces(state) {
+      return state.provinces
+    },
+    getCities(state) {
+      return state.cities
+    },
+    getZones(state) {
+      return state.zones
+    },
   },
   mutations: {
     setPhoneNumber(state,payload){
@@ -33,7 +49,19 @@ export default new Vuex.Store({
     },
     setToken(state, payload) {
       state.token = payload
-    }
+    },
+    setAddresses(state, payload) {
+      state.token = payload
+    },
+    setProvinces(state, payload) {
+      state.token = payload
+    },
+    setCities(state, payload) {
+      state.token = payload
+    },
+    setZones(state, payload) {
+      state.token = payload
+    },
   },
   actions: {
   },
