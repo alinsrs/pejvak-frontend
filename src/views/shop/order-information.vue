@@ -44,8 +44,8 @@
                   hide-selected
                   outlined
                   persistent-hint
-                  v-model="select"
-                  :items="items"
+                  v-model="from"
+                  :items="Array.from({length: 13}, (value, index) => 8 + index)"
                   hide-details
               ></v-combobox>
             </v-col>
@@ -60,8 +60,8 @@
                   hide-selected
                   outlined
                   persistent-hint
-                  v-model="select"
-                  :items="items"
+                  v-model="to"
+                  :items="Array.from({length: 13}, (value, index) => 9 + index)"
                   hide-details
               ></v-combobox>
             </v-col>
@@ -133,12 +133,15 @@ export default {
     menu2: false,
     select: [],
     address: undefined,
+    from: undefined,
+    to: undefined,
     items: [],
-    adresses: [],
+    addresses: [
+    ],
     amount: 20000000,
   }),
   mounted() {
-    axios.get(`${this.$store.getters.getServerAddress}/addresses`, {headers: {'Authorization': `Bearer ${this.$store.getters.getToken}`}})
+    axios.get(`${this.$store.getters.getServerAddress}/addresses?page=0&pageSize=10`, {headers: {'Authorization': `Bearer ${this.$store.getters.getToken}`}})
         .then(response => console.log(response))
         .catch(err => console.log(err))
   },

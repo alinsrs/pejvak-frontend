@@ -165,7 +165,7 @@ export default {
         .then(response => {
       this.regions = response.data.content
     })
-    axios.get(`${this.$store.getters.getServerAddress}/provinces/id/cities`, {headers: {'Authorization': `Bearer ${this.$store.getters.getToken}`}})
+    axios.get(`${this.$store.getters.getServerAddress}/provinces/${this.regions.id}/cities`, {headers: {'Authorization': `Bearer ${this.$store.getters.getToken}`}})
         .then(response => {
       this.cities = response.data.content
     })

@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    serverAddress : '',
+    serverAddress : 'https://api-pejvak.iran.liara.run/api/v1.0',
     phoneNumber : "",
     userID : "",
     token: "",
