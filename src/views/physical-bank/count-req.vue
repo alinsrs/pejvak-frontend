@@ -69,6 +69,18 @@
                     </v-menu>
                 </v-col>
 
+                <v-col>
+                    <div style="height: 50px; border: 1px solid #5B5C5F; border-radius: 15px">
+                        <date-picker mode="single">
+                            <template #icon>
+                                <v-icon>
+                                    mdi-calendar-blank
+                                </v-icon>
+                            </template>
+                        </date-picker>
+                    </div>
+                </v-col>
+
                 <v-col cols="12" sm="12">
                     <v-row class="mx-0">
                         <v-col cols="12" sm="6">
@@ -164,8 +176,12 @@
 </template>
 
 <script>
+import datePicker from "@alireza-ab/vue-persian-datepicker";
 export default {
     name: "count-req",
+    components: {
+      datePicker
+    },
     data: () => ({
         date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
         menu: false,
@@ -185,6 +201,26 @@ export default {
 </script>
 
 <style scoped>
+
+.pdp-input{
+    height: 3rem!important;
+}
+.pdp-icon{
+    height: 3rem!important;
+}
+.pdp-group{
+    height: 3rem!important;
+}
+.pdp{
+    --radius: 15px;
+
+    height: 3rem!important;
+}
+.rtl{
+    direction: ltr;
+    height: 3rem!important;
+}
+
 @font-face {
     font-family: 'My Iranian Sans';
     src: url('../../fonts/IRANSansXBlack.ttf') format('truetype');

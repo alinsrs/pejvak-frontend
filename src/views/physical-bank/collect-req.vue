@@ -47,6 +47,8 @@
                         </template>
                         <v-date-picker
                                 v-model="date"
+                                next-icon="mdi-chevron-left"
+                                prev-icon="mdi-chevron-right"
                                 no-title
                                 scrollable
                         >
@@ -67,6 +69,18 @@
                             </v-btn>
                         </v-date-picker>
                     </v-menu>
+                </v-col>
+
+                <v-col>
+                    <div style="height: 50px; border: 1px solid #5B5C5F; border-radius: 15px">
+                        <date-picker mode="single" class="pdp-input">
+                            <template #icon>
+                                <v-icon>
+                                    mdi-calendar-blank
+                                </v-icon>
+                            </template>
+                        </date-picker>
+                    </div>
                 </v-col>
 
                 <v-col cols="12" sm="12">
@@ -111,7 +125,7 @@
                      bottom: 3%; top: 100%; font-size: 20px"
                            :style="{'background-color': $vuetify.theme.currentTheme.primary}"
                            height="50px"
-                            class="txtRegular"
+                           class="txtRegular"
                     >
                         ثبت درخواست
                     </v-btn>
@@ -124,8 +138,13 @@
 </template>
 
 <script>
+import datePicker from "@alireza-ab/vue-persian-datepicker";
+
 export default {
     name: "collect-req",
+    components: {
+        datePicker
+    },
     data: () => ({
         date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
         menu: false,
@@ -144,6 +163,34 @@ export default {
 </script>
 
 <style scoped>
+.pdp.rtl {
+    direction: ltr;
+
+    border-radius: 15px;
+}
+
+.pdp {
+    --icon-background: transparent;
+    --border-color: transparent;
+}
+.pdp-group{
+    height: 50px;
+    border-radius: 15px;
+}
+
+.pdp-icon {
+    border-right: 0;
+}
+
+.dp .pdp-group .pdp-input {
+    height: 3rem!important;
+    font-size: 3rem;
+    font-weight: 400;
+    position: relative;
+    flex: 1 1 auto;
+}
+
+
 @font-face {
     font-family: 'My Iranian Sans';
     src: url('../../fonts/IRANSansXBlack.ttf') format('truetype');
